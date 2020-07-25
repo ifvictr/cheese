@@ -41,7 +41,7 @@ func handleSlackEvents(w http.ResponseWriter, r *http.Request) {
 	body := buf.String()
 	apiEvent, err := slackevents.ParseEvent(json.RawMessage(body),
 		slackevents.OptionVerifyToken(
-			&slackevents.TokenComparator{VerificationToken: cheeseConfig.SigningSecret}))
+			&slackevents.TokenComparator{VerificationToken: cheeseConfig.VerificationToken}))
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
