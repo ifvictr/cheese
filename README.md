@@ -2,7 +2,7 @@
 
 <img alt="Moldy Cheese" width="128" src="https://files.ifvictr.com/2020/07/cheese.jpg" />
 
-The Cheese Touch, but over Slack. Idea taken from [Diary of a Wimpy Kid](https://diary-of-a-wimpy-kid.fandom.com/wiki/Cheese_Touch). Why did I make this? Besides having a reason to practice Go, I don’t know. 🤷‍♂
+The Cheese Touch, but over Slack. Idea taken from [Diary of a Wimpy Kid](https://diary-of-a-wimpy-kid.fandom.com/wiki/Cheese_Touch). Why did I make this? Besides having a reason to practice Go, I have no clue. 🤷‍♂
 
 ## Setup
 
