@@ -39,7 +39,7 @@ func OnMessage(slackClient *slack.Client, event *slack.MessageEvent) {
 
 	// Pass the cheese touch to the other user.
 	GiveCheeseTouch(precedingUserId)
-	slackClient.PostEphemeral(event.Channel, event.User, slack.MsgOptionText(
+	slackClient.PostMessage(event.Channel, slack.MsgOptionText(
 		fmt.Sprintf(PassSuccessMessage, event.User, precedingUserId), false))
 }
 
