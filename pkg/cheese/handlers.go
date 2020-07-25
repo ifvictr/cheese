@@ -16,7 +16,7 @@ func OnMessage(slackClient *slack.Client, event *slack.MessageEvent) {
 	}
 
 	// The user has the cheese touch and intends to pass it.
-	res, err := GetPrecedingMessage(slackClient, event.Channel, event.Timestamp)
+	res, err := GetPrecedingMessage(slackClient, event.Channel, event.TimeStamp)
 	if err != nil || len(res.Messages) == 0 {
 		fmt.Println("Failed to get the preceding message")
 		slackClient.PostEphemeral(event.Channel, event.User, slack.MsgOptionText(
