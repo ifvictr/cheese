@@ -4,9 +4,21 @@ import (
 	"fmt"
 
 	"github.com/slack-go/slack"
+	"github.com/slack-go/slack/slackevents"
 )
 
-func OnMessage(slackClient *slack.Client, event *slack.MessageEvent) {
+func HandleInnerEvent(slackClient *slack.Client, innerEvent *slackevents.EventsAPIInnerEvent) {
+	switch e := innerEvent.Data.(type) {
+	case *slackevents.MessageEvent:
+		onMessage(slackClient, e)
+		break
+	case *slackevents.ReactionAddedEvent:
+		onReactionAdded(slackClient, e)
+		break
+	}
+}
+
+func onMessage(slackClient *slack.Client, event *slackevents.MessageEvent) {
 	// User must not be a bot
 	isValidUser := event.BotID == "" && event.User != "USLACKBOT" && event.User != ""
 	// Must be a new message on not another subtype (e.g. message_changed)
@@ -43,7 +55,7 @@ func OnMessage(slackClient *slack.Client, event *slack.MessageEvent) {
 		fmt.Sprintf(PassSuccessMessage, event.User, precedingUserId), false))
 }
 
-func OnReactionAdded(slackClient *slack.Client, event *slack.ReactionAddedEvent) {
+func onReactionAdded(slackClient *slack.Client, event *slackevents.ReactionAddedEvent) {
 	// Listen for users reacting with a pointing_up emoji.
 	if event.Reaction != "point_up" && event.Reaction != "point_up_2" {
 		return

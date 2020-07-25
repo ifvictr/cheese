@@ -16,5 +16,6 @@ func main() {
 	config := cheese.NewConfig()
 
 	// Start receiving messages
+	fmt.Println(fmt.Sprintf("Listening on port %d", config.Port))
 	cheese.StartServer(config)
 }
