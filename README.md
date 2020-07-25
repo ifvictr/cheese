@@ -23,23 +23,25 @@ Then you’ll need to subscribe the app to a few events. The server has an endpo
 
 ### Environment variables
 
+Here are all the variables you need to set up, with hints.
+
 ```bash
 # Port to run the app server on
-PORT=
+PORT=3000
 # Redis database to record the user with the cheese touch
-REDIS_URL=
-# App config
-SLACK_CLIENT_BOT_TOKEN=
-SLACK_VERIFICATION_TOKEN=
+REDIS_URL=redis://…
+# App config. Obtained from the "Basic Information" page of your app.
+SLACK_CLIENT_BOT_TOKEN=xoxb-…
+SLACK_VERIFICATION_TOKEN=xxxx…
 ```
 
 ### Deploying
 
 ```bash
-# If you just want to run it
+# Run it
 make
 
-# Running from a binary
+# Run it explicitly from a binary
 make build
 ./bin/cheese
 ```
