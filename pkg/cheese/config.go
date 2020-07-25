@@ -30,8 +30,8 @@ func getEnv(key string, defaultValue string) string {
 	return defaultValue
 }
 
-func getEnvAsInt(name string, defaultValue int) int {
-	valueStr := getEnv(name, "")
+func getEnvAsInt(key string, defaultValue int) int {
+	valueStr := getEnv(key, "")
 	if value, err := strconv.Atoi(valueStr); err == nil {
 		return value
 	}
