@@ -79,6 +79,13 @@ func handleSlackEvents(w http.ResponseWriter, r *http.Request) {
 
 func handleSlashCommand(w http.ResponseWriter, r *http.Request) {
 	command, _ := slack.SlashCommandParse(r)
+
+	if !command.ValidateToken(cheeseConfig.VerificationToken) {
+		w.WriteHeader(400)
+		w.Write([]byte("Request not verified."))
+		return
+	}
+
 	bearerOfCheese := WhoHasCheeseTouch()
 
 	var text string
@@ -86,7 +93,7 @@ func handleSlashCommand(w http.ResponseWriter, r *http.Request) {
 	if bearerOfCheese == "" {
 		text = "Looks like nobody has the Cheese Touch... yet... :cheese_wedge:"
 	} else if bearerOfCheese == command.UserID {
-		text = "Oh no, _you_ have the Cheese Touch! :cheese_wedge: Give it to someone else by posting :point_up: after their message!"
+		text = "Oh no, _you_ have the Cheese Touch! :cheese_wedge: Give it to someone else by reacting to their message with :point_up:!"
 	} else {
 		text = fmt.Sprintf("Looks like <@%s> has the Cheese Touch right now! :cheese_wedge:", bearerOfCheese)
 	}
