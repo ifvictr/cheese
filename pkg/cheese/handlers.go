@@ -38,7 +38,7 @@ func onMessage(slackClient *slack.Client, event *slackevents.MessageEvent) {
 
 	// Make sure the users are different.
 	precedingUserId := res.Messages[0].User
-	if precedingUserId == event.Username {
+	if precedingUserId == event.User {
 		return
 	}
 
