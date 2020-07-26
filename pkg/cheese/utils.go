@@ -52,6 +52,16 @@ func HasCheeseTouch(userId string) bool {
 	return bearingUserId == userId
 }
 
+func WhoHasCheeseTouch() string {
+	bearingUserId, err := redisClient.Get("bearing_user_id").Result()
+
+	if err != nil {
+		return ""
+	}
+
+	return bearingUserId
+}
+
 func HasCheeseTouchStarted() bool {
 	exists, err := redisClient.Exists("bearing_user_id").Result()
 
