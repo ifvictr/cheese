@@ -11,6 +11,7 @@ const (
 	PassEmoji1  = ":point_up:"
 	PassEmoji2  = ":point_up_2:"
 	SafeEmoji   = ":crossed_fingers:"
+	SafeEmoji2  = ":hand_with_index_and_middle_fingers_crossed:"
 )
 
 func GetMessage(slackClient *slack.Client, channelId string, messageId string) (*slack.GetConversationHistoryResponse, error) {
@@ -35,7 +36,7 @@ func HasIntentToPass(message string) bool {
 }
 
 func HasFingersCrossed(message string) bool {
-	return strings.Contains(message, SafeEmoji)
+	return strings.Contains(message, SafeEmoji) || strings.Contains(message, SafeEmoji2)
 }
 
 func HasCheese(message string) bool {
