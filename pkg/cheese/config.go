@@ -14,7 +14,7 @@ type Config struct {
 
 func NewConfig() *Config {
 	return &Config{
-		BotToken:          getEnv("SLACK_CLIENT_BOT_TOKEN", ""),
+		BotToken:          getEnv("SLACK_BOT_TOKEN", ""),
 		Port:              getEnvAsInt("PORT", 3000),
 		RedisURL:          getEnv("REDIS_URL", "redis://localhost:6379/0"),
 		VerificationToken: getEnv("SLACK_VERIFICATION_TOKEN", ""),
