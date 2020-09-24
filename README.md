@@ -21,6 +21,8 @@ Then you’ll need to subscribe the app to a few events. The server has an endpo
 - `message.groups`
 - `reaction_added`
 
+You can optionally create a slash command, `/cheesewho`, that tells the user who has the Cheese Touch!. Point it to the URL `https://<SERVER>/slack/cheesewho`
+
 ### Environment variables
 
 Here are all the variables you need to set up, with hints.
